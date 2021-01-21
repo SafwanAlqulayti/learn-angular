@@ -1,0 +1,17 @@
+*{
+    width: 85%;
+    margin: auto;
+}
+.wrapper{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    flex-wrap: wrap;
+
+}
+ .card {
+     color: aqua;
+    width: 30%;
+    margin-bottom: 20px;
+}

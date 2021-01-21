@@ -1,0 +1,7 @@
+/* nav{
+    display: flex;
+    width: 400px;
+}
+nav>ul>*{
+flex-direction: row;
+} */
