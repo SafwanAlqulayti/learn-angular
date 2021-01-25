@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http"
 
 import {  throwError } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
+import { Product } from './product';
 
 
 @Injectable({
@@ -27,7 +28,9 @@ export class DataService {
     var links = {};
     parts.forEach( p => {
       let section = p.split(';');
+      console.log(header.split(','),'sss')
       var url = section[0].replace(/<(.*)>/, '$1').trim();
+     // console.log(section[1].replace(/rel="(.*)"/, '$1').trim(),'name')
       var name = section[1].replace(/rel="(.*)"/, '$1').trim();
       links[name] = url;
 
@@ -55,16 +58,18 @@ export class DataService {
   public sendGetRequest(){
     // Add safe, URL encoded _page and _limit parameters 
     // Now we have access to res.body
-    return this.httpClient.get(this.REST_API_SERVER, {  params: new HttpParams({fromString: "_page=1&_limit=20"}), observe: "response"}).pipe(retry(3), catchError(this.handleError), tap(res => {
-      console.log(res.headers.get('Link'),"link======");
+    return this.httpClient.get<Product[]>(this.REST_API_SERVER, {  params: new HttpParams({fromString: "_page=1&_limit=20"}), observe: "response"}).pipe(retry(3), catchError(this.handleError), tap(res => {
+    //  console.log(res.headers.get('Link'),"link======");
       this.parseLinkHeader(res.headers.get('Link'));
+     // console.log(res.headers.get('Link'),"22222222222======");
+
     }));
   }
   public sendGetRequestToUrl(url: string){
-    return this.httpClient.get(url, { observe: "response"}).pipe(retry(3), catchError(this.handleError), tap(res => {
-      console.log(res.headers.get('Link'));
+    return this.httpClient.get<Product[]>(url, { observe: "response"}).pipe(retry(3), catchError(this.handleError), tap(res => {
+    //  console.log(res.headers.get('Link'));
       this.parseLinkHeader(res.headers.get('Link'));
-      console.log(this.first)
+    //  console.log(this.first)
     }));
   }
 

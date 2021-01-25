@@ -1,0 +1,23 @@
+<div class="container">
+    <div [ngClass]="toggleProperty ? 'flipped' : ''" class="card">
+      <div class="front">
+        <ng-content select="flip-card-front"></ng-content>
+        <div class="arrow-icon" (click)="toggle()">
+          <i class="ion-ios-arrow-back"></i>
+        </div>
+        <flip-card-front>
+            <h2>This is card front</h2>
+          </flip-card-front>
+      </div>
+      <div class="back">
+        <ng-content select="flip-card-back"></ng-content>
+        <div class="arrow-icon" (click)="toggle()">
+          <i class="ion-ios-arrow-back"></i>
+        </div>
+        <flip-card-back>
+            <h2>This is card back</h2>
+          </flip-card-back>
+      </div>
+    </div>
+    
+  </div>

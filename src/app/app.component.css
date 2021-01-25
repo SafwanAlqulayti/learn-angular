@@ -1,0 +1,7 @@
+.mat-toolbar{
+    background-color: rgb(126, 2, 2);
+}
+
+.mat-toolbar > *{
+margin: auto;
+}

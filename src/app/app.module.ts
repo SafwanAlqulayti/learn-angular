@@ -19,6 +19,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { LogPageComponent } from './log-page/log-page.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlipCardComponent } from './flip-card/flip-card.component';
+import { FlipCardFrontComponent } from './flip-card/flip-card-front.component';
+import { FlipCardBackComponent } from './flip-card/flip-card-back.component';
 
 
 @NgModule({
@@ -30,7 +35,11 @@ import { AboutComponent } from './about/about.component';
     MainComponent,
     FootComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    LogPageComponent,
+    FlipCardComponent,
+    FlipCardBackComponent,
+    FlipCardFrontComponent
   ],
   imports: [
     BrowserModule,
@@ -40,14 +49,18 @@ import { AboutComponent } from './about/about.component';
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'log', component: LogPageComponent },
+      { path: 'cards', component: FlipCardComponent },
+
+
     ]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatCardModule
-  
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
